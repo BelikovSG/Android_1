@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Погода</string>
     <string name="title">Погода</string>
-    <string name="city">Красноярск</string>
+    <string name="city">Название Города</string>
+    <string name="CityButton">Выбрать</string>
     <string name="temp">23</string>
     <string name="data">20.05.2019</string>
 </resources>
