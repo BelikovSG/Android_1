@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="title">Weather</string>
+    <string name="city">City Name</string>
+    <string name="CityButton">Choose</string>
+    <string name="temp">23</string>
+    <string name="data">20.05.2019</string>
+</resources>

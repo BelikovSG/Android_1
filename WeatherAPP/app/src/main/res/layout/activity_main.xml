@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    >
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+
+        <fragment
+            android:id="@+id/choose_city"
+            android:name="com.example.weatherapp.fragments.CitiesListFragment"
+            android:layout_width="match_parent"
+            android:layout_height="622dp" />
+
+        <FrameLayout
+            android:id="@+id/placeholder_weather"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/CityEdit"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="city" />
+
+    <Button
+        android:id="@+id/CityButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/CityButton"
+        android:layout_gravity="bottom|center_horizontal"/>
+</FrameLayout>
