@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
@@ -11,42 +10,40 @@
 
     <TextView
         android:id="@+id/text_title"
+        style="@style/MyBaseText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/colorText"
         android:text="@string/title"
-        android:textSize="@dimen/dimenTextTitle"/>
+        android:textSize="@dimen/dimenTextTitle" />
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dimenMarginTop"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/CityEdit"
+            style="@style/MyText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
+            android:layout_height="@dimen/dimenHeight"
             android:layout_margin="@dimen/dimenMarginTop"
-            >
-            <EditText
-                android:id="@+id/CityEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/dimenHeight"
-                android:layout_margin="@dimen/dimenMarginTop"
-                android:padding="@dimen/padding"
-                android:background="@color/colorText"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="@string/city"
-                />
-            <Button
-                android:id="@+id/CityButton"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/dimenHeight"
-                android:textColor="@color/colorPrimaryDark"
-                android:background="@color/colorPrimary"
-                android:text="@string/CityButton"
-                android:layout_margin="@dimen/dimenMarginTop"
-                app:layout_constraintTop_toBottomOf="@id/CityEdit"
-                />
-        </LinearLayout>
+            android:background="@color/colorText"
+            android:padding="@dimen/padding"
+            android:text="@string/city" />
 
+        <Button
+            android:id="@+id/CityButton"
+            style="@style/MyText"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimenHeight"
+            android:layout_margin="@dimen/dimenMarginTop"
+            android:background="@color/colorPrimary"
+            android:text="@string/CityButton"
+            app:layout_constraintTop_toBottomOf="@id/CityEdit" />
+    </LinearLayout>
 
 
 </FrameLayout>
