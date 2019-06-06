@@ -6,9 +6,11 @@ public class CityIndex implements Serializable {
     private int index;
     private String cityName;
 
+
     public CityIndex(int imageIndex, String cityName) {
         this.index = imageIndex;
         this.cityName = cityName;
+
     }
 
     public int getIndex() {
@@ -18,4 +20,5 @@ public class CityIndex implements Serializable {
     public String getCityName() {
         return cityName;
     }
+
 }

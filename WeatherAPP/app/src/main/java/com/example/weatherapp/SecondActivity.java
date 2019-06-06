@@ -1,19 +1,26 @@
 package com.example.weatherapp;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static com.example.weatherapp.MainActivity.NAME_CITY;
+import static com.example.weatherapp.MainActivity.PRESSURE_CITY;
+import static com.example.weatherapp.MainActivity.WIND_CITY;
 
 
 public class SecondActivity extends AppCompatActivity {
     private TextView city;
-    private TextView datas;
+    private TextView dates;
     private String cityName;
+    private String cityWind;
+    private String cityPressure;
     private Date date = new Date();
     private SimpleDateFormat format1;
 
@@ -24,14 +31,40 @@ public class SecondActivity extends AppCompatActivity {
         initViews();
         if (getIntent() != null && getIntent().getExtras() != null) {
             cityName = getIntent().getStringExtra(NAME_CITY);
+            cityWind = getIntent().getStringExtra(WIND_CITY);
+            cityPressure = getIntent().getStringExtra(PRESSURE_CITY);
             city.setText(String.valueOf(cityName));
         }
         format1 = new SimpleDateFormat("dd.MM.yyyy");
-        datas.setText(String.valueOf(format1.format(date)));
+        dates.setText(String.valueOf(format1.format(date)));
+
+        if (cityWind.compareToIgnoreCase("True") == 0) {
+            ViewGroup elements2 = findViewById(R.id.layout);
+            TextView textViewManual = new TextView(this);
+            int colorAccent = ContextCompat.getColor(this, R.color.colorText);
+            textViewManual.setTextColor(colorAccent);
+            textViewManual.setText("Ветер 5 м/с");
+            textViewManual.setTextSize(30);
+            textViewManual.setGravity(Gravity.CENTER_HORIZONTAL);
+            elements2.addView(textViewManual);
+
+        }
+        if (cityPressure.compareToIgnoreCase("True") == 0) {
+            ViewGroup elements2 = findViewById(R.id.layout);
+            TextView textViewManual = new TextView(this);
+            int colorAccent = ContextCompat.getColor(this, R.color.colorText);
+            textViewManual.setTextColor(colorAccent);
+            textViewManual.setText("Давление 750 мм рт.ст.");
+            textViewManual.setTextSize(30);
+            textViewManual.setGravity(Gravity.CENTER_HORIZONTAL);
+            elements2.addView(textViewManual);
+
+        }
+
     }
 
     private void initViews() {
         city = findViewById(R.id.text_city);
-        datas = findViewById(R.id.text_data);
+        dates = findViewById(R.id.text_data);
     }
 }

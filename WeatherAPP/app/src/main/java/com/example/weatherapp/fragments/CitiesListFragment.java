@@ -58,7 +58,7 @@ public class CitiesListFragment extends ListFragment {
 
         if (isDualPane) {
             getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-            showCoatOfArms(cityIndexParcel);
+            showWeather(cityIndexParcel);
         }
     }
 
@@ -72,10 +72,10 @@ public class CitiesListFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         TextView cityNameView = (TextView) v;
         cityIndexParcel = new CityIndex(position, cityNameView.getText().toString());
-        showCoatOfArms(cityIndexParcel);
+        showWeather(cityIndexParcel);
     }
 
-    private void showCoatOfArms(CityIndex parcel) {
+    private void showWeather(CityIndex parcel) {
         if (getActivity() == null) {
             return;
         }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <dimen name="WidthImageTemp">110dp</dimen>
     <dimen name="dimenHeightImageTemp">110dp</dimen>
     <dimen name="dimenHeight">70dp</dimen>
@@ -11,6 +10,4 @@
     <dimen name="dimenTexTData">45dp</dimen>
     <dimen name="dimenMarginTop">10dp</dimen>
     <dimen name="dimenMarginRightTemp">100dp</dimen>
-
-
 </resources>
