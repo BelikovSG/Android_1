@@ -1,10 +1,13 @@
 package com.example.weatherapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -13,11 +16,13 @@ import java.util.Date;
 import static com.example.weatherapp.MainActivity.NAME_CITY;
 import static com.example.weatherapp.MainActivity.PRESSURE_CITY;
 import static com.example.weatherapp.MainActivity.WIND_CITY;
+import static com.example.weatherapp.fragments.WeatherFragment.CITY;
 
 
-public class SecondActivity extends AppCompatActivity {
-    private TextView city;
-    private TextView dates;
+public class SecondActivity extends AppCompatActivity implements View.OnClickListener {
+    private TextView tvСity;
+    private TextView tvDates;
+    private Button btnNext;
     private String cityName;
     private String cityWind;
     private String cityPressure;
@@ -29,14 +34,15 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         initViews();
+        btnNext.setOnClickListener(this);
         if (getIntent() != null && getIntent().getExtras() != null) {
             cityName = getIntent().getStringExtra(NAME_CITY);
             cityWind = getIntent().getStringExtra(WIND_CITY);
             cityPressure = getIntent().getStringExtra(PRESSURE_CITY);
-            city.setText(String.valueOf(cityName));
+            tvСity.setText(String.valueOf(cityName));
         }
         format1 = new SimpleDateFormat("dd.MM.yyyy");
-        dates.setText(String.valueOf(format1.format(date)));
+        tvDates.setText(String.valueOf(format1.format(date)));
 
         if (cityWind.compareToIgnoreCase("True") == 0) {
             ViewGroup elements2 = findViewById(R.id.layout);
@@ -63,8 +69,17 @@ public class SecondActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.next_button) {
+            Intent nextActivity = new Intent(this, WeatherHistoryActivity.class);
+            startActivity(nextActivity);
+        }
+    }
+
     private void initViews() {
-        city = findViewById(R.id.text_city);
-        dates = findViewById(R.id.text_data);
+        tvСity = findViewById(R.id.text_city);
+        tvDates = findViewById(R.id.text_data);
+        btnNext = findViewById(R.id.next_button);
     }
 }
