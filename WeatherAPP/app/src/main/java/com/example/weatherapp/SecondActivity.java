@@ -16,7 +16,6 @@ import java.util.Date;
 import static com.example.weatherapp.MainActivity.NAME_CITY;
 import static com.example.weatherapp.MainActivity.PRESSURE_CITY;
 import static com.example.weatherapp.MainActivity.WIND_CITY;
-import static com.example.weatherapp.fragments.WeatherFragment.CITY;
 
 
 public class SecondActivity extends AppCompatActivity implements View.OnClickListener {
@@ -24,8 +23,8 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     private TextView tvDates;
     private Button btnNext;
     private String cityName;
-    private String cityWind;
-    private String cityPressure;
+    private boolean cityWind;
+    private boolean cityPressure;
     private Date date = new Date();
     private SimpleDateFormat format1;
 
@@ -37,14 +36,15 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         btnNext.setOnClickListener(this);
         if (getIntent() != null && getIntent().getExtras() != null) {
             cityName = getIntent().getStringExtra(NAME_CITY);
-            cityWind = getIntent().getStringExtra(WIND_CITY);
-            cityPressure = getIntent().getStringExtra(PRESSURE_CITY);
+            cityWind = getIntent().getBooleanExtra(WIND_CITY, true);
+            cityPressure = getIntent().getBooleanExtra(PRESSURE_CITY, true);
             tvСity.setText(String.valueOf(cityName));
         }
         format1 = new SimpleDateFormat("dd.MM.yyyy");
-        tvDates.setText(String.valueOf(format1.format(date)));
+        String newDate = String.valueOf(format1.format(date));
+        tvDates.setText(newDate);
 
-        if (cityWind.compareToIgnoreCase("True") == 0) {
+        if (cityWind == true) {
             ViewGroup elements2 = findViewById(R.id.layout);
             TextView textViewManual = new TextView(this);
             int colorAccent = ContextCompat.getColor(this, R.color.colorText);
@@ -55,7 +55,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
             elements2.addView(textViewManual);
 
         }
-        if (cityPressure.compareToIgnoreCase("True") == 0) {
+        if (cityPressure == true) {
             ViewGroup elements2 = findViewById(R.id.layout);
             TextView textViewManual = new TextView(this);
             int colorAccent = ContextCompat.getColor(this, R.color.colorText);
