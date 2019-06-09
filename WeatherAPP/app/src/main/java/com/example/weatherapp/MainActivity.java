@@ -15,9 +15,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final String WIND_CITY = "WIND_CITY";
     public static final String PRESSURE_CITY = "PRESSURE_CITY";
     private EditText etEnteredCity;
-    private CheckBox wind;
-    private CheckBox pressure;
-    private Button choiceCity;
+    private CheckBox cbWind;
+    private CheckBox cbPressure;
+    private Button btnChoiceCity;
     private String cityName;
 
     @Override
@@ -25,12 +25,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
-        choiceCity.setOnClickListener(this);
+        btnChoiceCity.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.cityButton) {
+        if (v.getId() == R.id.city_button) {
             Intent nextActivity = new Intent(this, SecondActivity.class);
             String cityName = String.valueOf(etEnteredCity.getText());
 
@@ -41,13 +41,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 nextActivity.putExtra(NAME_CITY, cityName);
             }
             String choiceWind = "False";
-            if (wind.isChecked()) {
+            if (cbWind.isChecked()) {
                 choiceWind = "True";
             }
             nextActivity.putExtra(WIND_CITY, choiceWind);
 
             String choicePressure = "False";
-            if (pressure.isChecked()) {
+            if (cbPressure.isChecked()) {
                 choicePressure = "True";
             }
             nextActivity.putExtra(PRESSURE_CITY, choicePressure);
@@ -69,9 +69,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initViews() {
-        choiceCity = findViewById(R.id.cityButton);
-        etEnteredCity = findViewById(R.id.CityEdit);
-        wind = findViewById(R.id.wind);
-        pressure = findViewById(R.id.pressure);
+        btnChoiceCity = findViewById(R.id.city_button);
+        etEnteredCity = findViewById(R.id.city_edit);
+        cbWind = findViewById(R.id.wind);
+        cbPressure = findViewById(R.id.pressure);
     }
 }
