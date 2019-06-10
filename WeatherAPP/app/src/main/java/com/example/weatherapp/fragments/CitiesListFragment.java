@@ -6,12 +6,14 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.weatherapp.R;
 import com.example.weatherapp.WeatherActivity;
@@ -40,10 +42,11 @@ public class CitiesListFragment extends ListFragment {
             return;
         }
 
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 activityContext,
-                R.array.cities_list,
-                android.R.layout.simple_list_item_activated_1);
+                R.layout.item, R.id.textView, getResources().getStringArray(R.array.cities_list)
+        );
+
         setListAdapter(adapter);
 
         detailsFrame = activityContext.findViewById(R.id.placeholder_weather);
@@ -70,8 +73,10 @@ public class CitiesListFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        TextView cityNameView = (TextView) v;
-        cityIndexParcel = new CityIndex(position, cityNameView.getText().toString());
+
+
+        TextView textView = v.findViewById(R.id.textView);
+        cityIndexParcel = new CityIndex(position, textView.getText().toString());
         showWeather(cityIndexParcel);
     }
 

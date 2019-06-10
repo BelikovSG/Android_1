@@ -40,15 +40,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 nextActivity.putExtra(NAME_CITY, cityName);
             }
-            String choiceWind = "False";
+            boolean choiceWind = false;
             if (cbWind.isChecked()) {
-                choiceWind = "True";
+                choiceWind = true;
             }
             nextActivity.putExtra(WIND_CITY, choiceWind);
 
-            String choicePressure = "False";
+            boolean choicePressure = false;
             if (cbPressure.isChecked()) {
-                choicePressure = "True";
+                choicePressure = true;
             }
             nextActivity.putExtra(PRESSURE_CITY, choicePressure);
             startActivity(nextActivity);
